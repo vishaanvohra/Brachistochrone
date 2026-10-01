@@ -1,0 +1,368 @@
+\documentclass{article}
+\usepackage{multicol}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{float}
+\usepackage{caption}
+\usepackage{amsmath}
+\title{Deriving the Brachistochrone Curve using Calculus of Variations\\ \large Reflective Journal \\ \large Mathematical Investigations \\ \large Year 1, Mathematics}
+\author{Vishaan Vohra}
+\date{November 2025}
+\usepackage[margin=1in]{geometry}
+\usepackage{amssymb}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+Originally posed by Johann Bernoulli in 1696, the Brachistochrone problem seeks the curve along which a particle slides from one point to another in the shortest time under uniform gravity. Although there exist several methods to approach this problem, we shall consider the calculus of variations to derive parametric equations defining this path. The resulting curve is a cycloid, illustrating how mathematical principles can determine optimal paths in nature. Throughout this paper, we consider a particle \textit{P} moving along an optimal curve \textit{C} for notational consistency. We use first-person pronouns, referencing the plural "we" during derivation and the singular "I" during reflection. 
+\end{abstract}
+\section*{Problem Illustration}
+The image below illustrates the Brachistochrone problem. If particles are released simultaneously from the starting point along different frictionless curves under uniform gravity, the particle travelling along the cycloid reaches the destination first. In this case, the particle is particle \textit{P} and the cycloid is curve \textit{C}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{BrachistochroneImage.png}
+    \caption{Examples of curves connecting two points.\textsuperscript 1}
+    \label{Figure 1}
+\end{figure}
+\section*{Introduction}
+When I first read this problem, I immediately considered an approach that involved maximising speed functions and minimising time functions. I assumed it would be too difficult to approach this using my knowledge of A-level mechanics methods, as it is an area of mathematics I personally struggle with, so I have considered a calculus approach instead. This method is outlined in the rest of this paper.
+\newpage
+\begin{multicols}{2}
+    \footnotesize
+    \tableofcontents
+\end{multicols}
+\section{Understanding the approach}
+We have considered a formal definition of the Brachistochrone problem. More abstractly, our aim is to find the curve $C$ in the cartesian plane for a particle $P$ to travel on, such that the time taken for this journey is minimised. It is clear that the particle develops more speed when descending a steeper gradient, but this must be balanced against the need to cover the remaining horizontal distance at a shallower gradient. Thus, we consider a method which prioritises gaining speed early on, whilst covering as much horizontal distance as possible before the gradient of the curve becomes shallower after the inflection point. 
+\section{Expressing the time}
+\subsection{Explanation}
+Considering Step 1 and our approach to the Brachistochrone problem, we know that we need to minimise the time taken for \textit{P} to move along \textit{C}. In order to do this using calculus, we must first express the time taken as a function of the shape of the curve.
+It is uncommon to express the time taken to traverse a curve in most graphical contexts, but it is often more convenient to express the distance (i.e. the length of this curve) and the speed at specific points along it (i.e. the gradient). These three quantities are related by a familiar equation:
+\begin{equation}
+    speed = \frac{distance}{time}
+\end{equation}
+At any point on the curve, let us consider the distance travelled by particle \textit{P}, denoted by \textit{s}, and the time taken to travel this distance, denoted by \textit{t}.
+\subsection{Calculus}
+In calculus, we can consider infinitesimally small sections of distance, \textit{ds}, and time, \textit{dt}.
+Thus, the instantaneous speed of particle \textit{P} at this point can be expressed as: $v = \frac{ds}{dt},$ which can be rearranged to:
+\begin{equation}
+    dt = \frac{ds}{v}.
+\end{equation}
+\subsection{Energy}
+At this stage, we know that \textit{v} will be a function of $y$, as the speed of the particle is entirely dependent on its loss of gravitational potential energy. 
+Assuming the particle starts from rest and that there is no air resistance, we measure the $y$ component downward, and use the conservation of energy to give:
+\begin{equation}
+     | \Delta GPE | = | \Delta KE |,
+\end{equation}
+
+where GPE and KE refer to Gravitational Potential Energy and Kinetic Energy respectively. 
+Considering their formulae, we know that:
+\begin{equation}
+    | mg \Delta h | = | \frac{1}{2} mv^2|, \quad \text{thus:} \quad v = \sqrt{2g \Delta h}.
+\end{equation}
+We know that \textit{h} specifically refers to the vertical component of distance, so we have shown that the speed \textit{v} is only dependent on the \textit{y} variable. Hence, \textit{v} can also be written \textit{v(y)}, denoting \textit{v} is implicitly a function of \textit{y}.
+\section{Time functional}
+A functional is a mapping whose input is a function and whose output is a number. Here, \textit{T[y]} denotes the total time as a functional of the curve \textit{y(x)}. Let us consider \textit{T}, the total time taken for particle \textit{P} to travel along curve \textit{C}. We can describe \textit{T} as the sum of all increments of \textit{t}. Thus:
+\begin{equation}
+    T \approx \sum_i \Delta t_i, \quad \text{where:} \quad \Delta t_i = t_{i+1} - t_i,
+\end{equation}
+
+i.e. the next increment of time.
+\\
+For infinitesimally small increments of time \textit{t}, we know that:
+\begin{equation}
+    \Delta t_i \approx dt.
+\end{equation}
+Thus, we now have: 
+\begin{equation}
+    T = \lim_{\Delta t_i \to 0} \sum_i \Delta t_i = \int dt.
+\end{equation}
+Earlier, in equation (2) we expressed \textit{dt} using \textit{ds} and \textit{v}. Thus, we have:
+\begin{equation}
+    T = \int dt = \int \frac{ds}{v}.
+\end{equation}
+We can express \textit{ds} using \textit{dx} and \textit{dy}, which denote infinitesimally small horizontal and vertical components of distance, using the Pythagorean theorem. At any specific point on the curve, 
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{dsdydx.png}
+    \label{Figure 2}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+    \begin{equation}
+        ds = \sqrt{dx^2 + dy^2}
+    \end{equation}
+\end{minipage}
+\caption{Illustration of the application of the Pythagorean theorem as given above.\textsuperscript 2}
+\end{figure}
+\noindent
+Simplifying this equation, we have:
+\begin{equation}
+    ds = \sqrt{dx^2 + dy^2} = dx \sqrt{1 + \left(\frac{dy}{dx}\right)^2},
+\end{equation}
+
+which, interestingly, is the arc length equation when integrated. This follows from summing all limitingly small $ds$, hence the integral.
+\\
+Hence, we have:
+\begin{equation}
+    T[y] = \int_{x_0}^{x_1} \frac{\sqrt{1 + \left(\frac{dy}{dx}\right)^2}}{v(y)} dx,
+\end{equation}
+
+where $x_0$ and $x_1$ are the x-coordinates of the start and end point, respectively, and \textit{T} is a functional with input \textit{y}.
+\section{Setting up the minimisation}
+We now have an functional for the total time, \textit{T}. In order to find the Brachistochrone curve, we must minimise this functional in order to derive the Euler-Lagrange equation. 
+\subsection{Author's note}
+At this stage of writing up my proof, I realised I cannot apply A-level optimisation methods to minimise \textit{T} as I needed to find a function \textit{y(x)} such that \textit{T[y]} was minimised, rather than a specific value. I did some research around functionals and spoke to a colleague, Fred Tyrrell, a third year PhD student at the University of Bristol, who advised me to look into the Euler-Lagrange Equation. 
+\subsection{Euler-Lagrange Equation}
+The Euler-Lagrange equation gives us a differential equation that the optimal curve \textit{C} must satisfy. It is: 
+\begin{equation}
+    \frac{\partial F}{\partial y} - \frac{d}{dx}\frac{\partial F}{\partial y'} = 0,
+\end{equation}
+
+where \textit{F} is the Lagrangian and is a functional such that:
+\begin{equation}
+    F[y,y'] = \frac{\sqrt{1 + \left(y'\right)^2}}{v(y)}, \quad \text{where:} \quad y' = \frac{dy}{dx}.
+\end{equation}
+
+and so: 
+\begin{equation}
+    T[y, y'] = \int_{x_0}^{x_1} F[y,y'] dx.
+\end{equation}
+\subsection{Finding the partial derivatives}
+We begin by finding:
+\begin{equation}
+    \frac{\partial F}{\partial y},
+\end{equation}
+
+which considers a partial derivative of \textit{F} with respect to \textit{y}. This is:
+\begin{equation}
+    \frac{\partial F}{\partial y} = \frac{-v'(y) \sqrt{1+\left(y'\right)^2}}{v(y)^2}.
+\end{equation}
+We then find:
+\begin{equation}
+    \frac{\partial F}{\partial y'},
+\end{equation}
+
+which considers a partial derivative of \textit{F} with respect to \textit{y'}. This is:
+\begin{equation}
+    \frac{\partial F}{\partial y'} = \frac{y'}{v(y) \sqrt{1+\left(y'\right)^2}}
+\end{equation}
+\subsection{Differentiating the second partial derivative}
+We then need to differentiate the second partial derivative with respect to $x$ in order to find:
+\begin{equation}
+    \frac{d}{dx}\frac{\partial F}{\partial y'}.
+\end{equation}
+This is:
+\begin{equation}
+    \frac{d}{dx} \frac{\partial F}{\partial y'} 
+    = \frac{y''}{v\left(y\right) \left(1 + \left(y'\right)^2\right)^\frac{3}{2}} - \frac{v'\left(y\right) y'^2}{v\left(y\right)^2 \sqrt{1 + \left(y'\right)^2}}.
+\end{equation}
+\subsection{Combining the terms we have}
+We can now combine the terms we have found above. Using the Euler-Lagrange equation, we know that:
+\begin{equation}
+    \frac{-v'(y) \sqrt{1+\left(y'\right)^2}}{v(y)^2} - \left( \frac{y''}{v\left(y\right) \left(1 + \left(y'\right)^2\right)^\frac{3}{2}} - \frac{v'\left(y\right) y'^2}{v\left(y\right)^2 \sqrt{1 + \left(y'\right)^2}} \right) = 0,
+\end{equation}
+
+which we can rearrange to become:
+\begin{equation}
+    \frac{-v'(y) \sqrt{1+\left(y'\right)^2}}{v(y)^2} = \frac{y''}{v\left(y\right) \left(1 + \left(y'\right)^2\right)^\frac{3}{2}} - \frac{v'\left(y\right) y'^2}{v\left(y\right)^2 \sqrt{1 + \left(y'\right)^2}}.
+\end{equation}
+After some simplification, we have the following equation. The derivation has been condensed for conciseness, with some intermediate algebraic steps omitted.
+\begin{equation}
+    \frac{-v'(y) \sqrt{1+\left(y'\right)^2}}{v(y)^2} \cdot \left(1 + \left(y'\right)^2\right)^\frac{3}{2} \cdot v(y)^2= y''v(y) - v'\left(y\right) y'^2 \left(1 + \left(y'\right)^2\right).
+\end{equation}
+\begin{align}
+    \iff
+    y'' = \frac{v'\left(y\right) \left(\left(y'\right)^2 + 1\right)\left(\left(y'\right)^2 - 1\right)}{v(y)}.
+\end{align}
+We now note that this is a second order differential equation in \textit{x}, albeit \textit{x} is not explicitly seen in the equation. 
+\section{Solving the differential equation}
+\subsection{Author's notes}
+After staring at this equation for some time, I realised that it would be tricky to solve using A-level Further Maths methods. I did some further research into the Euler-Lagrange equation using math.stackexchange.com\textsuperscript 3, and found that there is a special case when the Lagrangian $F = KE - GPE$. If \textit{F = F(y,y')}, but there is no explicit reference to \textit{x} (i.e. no \textit{x} dependence), then the Euler-Lagrange equation can be written as:
+
+\begin{equation}
+    F - y' \frac{\partial F}{\partial y'} = c,
+\end{equation}
+where \textit{c} is some constant. 
+This is a first order differential equation in y', the Beltrami Identity.
+\subsection{Derivation}
+We can use algebra and the application of some basic rules of calculus to prove that the Beltrami Identity in equation (25) is equivalent to the second-order differential equation (24) we found earlier.
+\\
+First, let 
+\begin{equation}
+    \varphi = \frac{dy}{dx} = y'.
+\end{equation}
+So, we have that:
+\begin{equation}
+    \frac{d\varphi}{dx} = \varphi' = y''.
+\end{equation}
+Thus, by application of the chain rule, we also have that:
+\begin{equation}
+    \frac{d\varphi}{dx} = \frac{d\varphi}{dy} \frac{dy}{dx} = \varphi \frac{d\varphi}{dy},
+\end{equation}
+We can now substitute these values into our second order differential equation, so that: 
+\begin{equation}
+    y'' = \frac{v'\left(y\right) \left(\left(y'\right)^2 + 1\right)\left(\left(y'\right)^2 - 1\right)}{v(y)}, \quad \text{becomes:} \quad \varphi \frac{d\varphi}{dy} = \frac{v'\left(y\right) \left(\varphi^2 + 1\right)\left(\varphi^2 - 1\right)}{v(y)}
+\end{equation}
+\subsection{Author's notes}
+At this stage, I knew this was a first order differential equation and was confident I had manipulated my original equation correctly. However, it was difficult to spot which variable the differential equation was now referring to. $\varphi$ was an obvious candidate, but it was clear from the left hand side using ${d\varphi/dy}$ that this was incorrect. Albeit somewhat inefficient, I used trial and error to play around with ${\varphi\cdot d\varphi/dy}$ to find an alternative way to write it. In hindsight, this seems to be a common trick to simplify second order differential equations in specific cases, so I am glad it will be easier to spot the next time I encounter such a problem.
+\subsection{Which variable?}
+We now consider a somewhat informal approach which attempts to reverse implicit differentiation. We know that if we have two terms: ${\varphi}$ and ${d\varphi/dy}$, the differential must have a factor of ${\varphi^2}$ and that the constant after differentiating must equal \textit{1}. Thus, it becomes clear that:
+
+\begin{equation}
+    \varphi\frac{d\varphi}{dy} = \frac{d}{dy}(\frac{1}{2}\varphi^2).
+\end{equation}
+Hence, this is a first order differential equation in $\varphi^2$. We can now use the substitution \(u=\varphi^2\), obtaining:
+\begin{equation}
+    \frac{du}{dy}=2\varphi\frac{d\varphi}{dy},
+\end{equation}
+
+so the differential equation becomes:
+\begin{equation}
+    \frac{1}{2}\frac{du}{dy} = \frac{v'(y)}{v(y)}(u+1)(u-1),
+    \quad \text{or, equivalently,} \quad
+    \frac{du}{dy} = 2\frac{v'(y)}{v(y)}(u^2 - 1)
+\end{equation}
+\subsection{Solving}
+We can use the separation of variables method to obtain:
+\begin{equation}
+   \int \frac{du}{u^2-1}=\int 2\frac{v'(y)}{v(y)}\,dy.
+\end{equation}
+Let $A_n$, where $n \in \mathbb{N}$, be notation for arbitrary constants at each stage $n$ of solving below. We use partial fractions on the left hand side:
+\begin{equation}
+    \frac{1}{u^2-1}=\frac{1}{2}\Big(\frac{1}{u-1}-\frac{1}{u+1}\Big), \quad \text{hence:} \quad \int\frac{du}{u^2-1}=\frac{1}{2}\ln\Big|\frac{u-1}{u+1}\Big| + A_1.
+\end{equation}
+On the right hand side:
+\begin{equation}
+    \int 2\frac{v'(y)}{v(y)}\,dy = 2\ln|v(y)| + A_2.  
+\end{equation}
+Equating these expressions and collecting constants gives:
+\begin{equation}
+    \frac{1}{2}\ln\Big|\frac{u-1}{u+1}\Big| = 2\ln|v(y)| + A_3, \quad \text{and, equivalently: } \quad \ln\Big|\frac{u-1}{u+1}\Big| = 4\ln|v(y)| + A_4.
+\end{equation}
+Thus:
+\begin{equation}
+    \frac{u-1}{u+1} = K\,v(y)^4,
+\end{equation}
+
+where \(K=e^{A_4}\) is a constant.
+\\
+We now solve for $u$:
+\begin{equation}
+    u(1-Kv^4)=1+Kv^4 \quad\Longrightarrow\quad
+u(y)=\frac{1+K v(y)^4}{1-K v(y)^4}.
+\end{equation}
+We recall that \(u=\varphi^2=(y')^2\), therefore:
+\begin{equation}
+    (y')^2=\frac{1+K v(y)^4}{1-K v(y)^4}, \quad \text{and:} \quad y'=\pm\sqrt{\frac{1+K v(y)^4}{1-K v(y)^4}},
+\end{equation}
+
+with the sign chosen according to the geometry of the problem. In this example, particle $P$ is moving downwards from left to right, so the slope of curve $C$ is always negative. Hence, we only need to consider the negative square root for our graph. Thus, we have:
+\begin{equation}
+    y'=-\sqrt{\frac{1+K v(y)^4}{1-K v(y)^4}},
+\end{equation}
+\section{From the first-order relation to the cycloid}
+We begin by moving to the first integral (which is in an equivalent and simpler form).
+Rather than directly integrate the \(K\)-form, it is convenient to use the standard first integral of the Euler--Lagrange equation. One such first integral is:
+\begin{equation}
+ \frac{1}{v(y)\sqrt{1+\varphi^2}}=A,
+\end{equation}
+
+for some constant \(A\). This relation is algebraically equivalent to the \(K\)-form above for a suitable choice of constants; it is also much easier to manipulate. We then solve for \(p=y'\).
+From the first integral:
+\begin{equation}
+    \sqrt{1+\varphi^2}=\frac{1}{A\,v(y)} \quad\Longrightarrow\quad \varphi^2=\frac{1}{A^2 v(y)^2}-1,
+\end{equation}
+
+so, choosing the negative branch to match the geometry of a descending curve:
+\begin{equation}
+    y'=-\sqrt{\frac{1}{A^2 v(y)^2}-1}.
+\end{equation}
+We can now use a trigonometric substitution to solve this as follows. 
+Set:
+\begin{equation}
+    \varphi=\tan\theta \quad\Longrightarrow\quad \sqrt{1+\varphi^2}=\sec\theta,
+\end{equation}
+
+where $\theta$ is a parameter. Then, the first integral becomes:
+\begin{equation}
+    \sec\theta=\frac{1}{A\,v(y)} \quad\Longrightarrow\quad A\,v(y)=\cos\theta.
+\end{equation}
+We can now insert the physical speed 
+\(v(y)=\sqrt{2g\,y}\).
+Assuming a standard physical model where the particle $P$ starts from rest and \(y\) measures the vertical drop, we have that:
+\begin{equation}
+    A\sqrt{2g\,y}=\cos\theta \quad\Longrightarrow\quad
+y(\theta)=\frac{\cos^2\theta}{2gA^2}.
+\end{equation}
+We define a new constant:
+\begin{equation}
+    B:=\frac{1}{2gA^2},
+\end{equation}
+
+so that:
+\begin{equation}
+    y(\theta)=B\cos^2\theta.
+\end{equation}
+We can then obtain \(x(\theta)\) using \(\dfrac{dy}{dx}=\tan\theta\).
+We have:
+\begin{equation}
+    \frac{dy}{dx}=\tan\theta \quad\iff\quad
+\frac{\frac{dy}{d\theta}}{\frac{dx}{d\theta}}=\tan\theta,
+\end{equation}
+
+hence:
+\begin{equation}
+    \frac{dy}{d\theta}=\frac{dx}{d\theta}{\tan\theta}.
+\end{equation}
+We then differentiate \(y(\theta)=B\cos^2\theta\):
+\begin{equation}
+    \frac{dy}{d\theta}=-2B\sin\theta\cos\theta=-B\sin(2\theta).
+\end{equation}
+Therefore:
+\begin{equation}
+    \frac{dx}{d\theta}=\frac{-B\sin(2\theta)}{\tan\theta}
+= -B\cdot\frac{2\sin\theta\cos\theta}{\sin\theta/\cos\theta}
+= -2B\cos^2\theta.
+\end{equation}
+We then integrate with respect to \(\theta\):
+\begin{equation}
+    x(\theta)= -2B\int \cos^2\theta\,d\theta + x_0
+= -2B\Big(\frac{\theta}{2}+\frac{\sin(2\theta)}{4}\Big)+x_0,
+\end{equation}
+
+so:
+\begin{equation}
+    x(\theta)= -B\theta -\tfrac{B}{2}\sin(2\theta) + x_0.
+\end{equation}
+
+\section{Reparameterising to the standard cycloid form}
+We set \(t := 2\theta\). Using
+\begin{equation}
+    \cos^2\theta=\tfrac{1}{2}(1+\cos t),\qquad \sin(2\theta)=\sin t,
+\end{equation}
+
+we obtain:
+\begin{equation}
+    y(t)=\frac{B}{2}(1+\cos t),\qquad
+x(t)= -\frac{B}{2}t -\frac{B}{2}\sin t + x_0.
+\end{equation}
+We define:
+\begin{equation}
+    a:=\dfrac{B}{2}=\dfrac{1}{4gA^2}.
+\end{equation} 
+After reversing the parameter orientation (put \(t\mapsto -\tau\)) and choosing additive constants \(x_*,y_*\) to place the curve through the desired endpoints, the parameterisation becomes the standard cycloid $C$:
+\begin{equation}
+    \boxed{\,x(\tau)=x_* + a(\tau-\sin\tau),\qquad
+y(\tau)=y_* + a(1-\cos\tau)\,.}
+\end{equation}
+\section{Conclusion}
+In this paper, we considered the classical Brachistochrone problem: determining the curve along which a particle moves between two points in the shortest time under uniform gravity. Using the calculus of variations, we expressed the total time as a functional of the curve and applied the Euler–Lagrange equation to derive a differential equation for the optimal path. Through energy considerations and an appropriate parameterisation, we obtained the solution in parametric form, identifying the optimal curve as a cycloid.
+\\
+This derivation illustrates the power of mathematical principles in identifying optimal paths, and highlights how variational methods can be used to solve real-world problems. The cycloid is thus not only a curve of theoretical interest but also a model for practical applications where minimising transit time is essential.
+\section*{References}
+\begin{enumerate}
+    \item Viktor Blåsjö, Mathematics versus Philosophy in the Scientific Revolution, researchgate,net, 2021.
+    \item Jeff Cruzan, Parametric functions, xactly.com.
+    \item Simple simple Euler Lagrange Equation, math.stackexchange.com, 2012.
+\end{enumerate}
+\end{document}
